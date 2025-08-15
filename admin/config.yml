@@ -2,11 +2,14 @@ backend:
   name: github
   repo: aidamn81/candyheals
   branch: main
-  base_url: "/.netlify/functions"
+  base_url: "https://sweet-flan-5bb2d9.netlify.app/.netlify/functions"
   auth_endpoint: "oauth"
 
-media_folder: "assets/uploads"      # where uploaded files get saved in the repo
-public_folder: "/assets/uploads"    # how those files are referenced on the site
+media_folder: "assets/uploads"      # files saved in repo
+public_folder: "/assets/uploads"    # how files are referenced on the site
+
+media_library:
+  name: file
 
 publish_mode: editorial_workflow
 
@@ -32,9 +35,9 @@ collections:
             name: "background"
             widget: "object"
             fields:
-              - { label: "bg1 (Top)",   name: "bg1",    widget: "string", default: "#1a0030" }
-              - { label: "bg2 (Bottom)",name: "bg2",    widget: "string", default: "#320046" }
-              - { label: "surge1",      name: "surge1", widget: "string", default: "#ff2a8a" }
-              - { label: "surge2",      name: "surge2", widget: "string", default: "#1ea7ff" }
-              - { label: "surge3",      name: "surge3", widget: "string", default: "#ff3d4f" }
+              - { label: "bg1 (Top)",     name: "bg1",    widget: "string", default: "#1a0030" }
+              - { label: "bg2 (Bottom)",  name: "bg2",    widget: "string", default: "#320046" }
+              - { label: "surge1",        name: "surge1", widget: "string", default: "#ff2a8a" }
+              - { label: "surge2",        name: "surge2", widget: "string", default: "#1ea7ff" }
+              - { label: "surge3",        name: "surge3", widget: "string", default: "#ff3d4f" }
               - { label: "Glitter (0–1)", name: "glitter", widget: "number", value_type: "float", min: 0, max: 1, step: 0.05, default: 0.7 }
