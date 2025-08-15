@@ -1,40 +1,16 @@
 backend:
-  name: github
-  repo: aidamn81/candyheals
+  name: git-gateway
   branch: main
-  base_url: "https://sweet-flan-5bb2d9.netlify.app/.netlify/functions"
-  auth_endpoint: "oauth"
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-publish_mode: editorial_workflow
-
 collections:
-  - name: "site"
-    label: "Site Content"
-    format: "json"
-    files:
-      - file: "content/site.json"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - { label: "Events Text", name: "eventsText", widget: "text" }
-          - { label: "Types Text",  name: "typesText",  widget: "text" }
-          - { label: "About Text",  name: "aboutText",  widget: "text" }
-          - { label: "Showreel Embed (HTML)", name: "showreelHTML", widget: "text" }
-          - { label: "Header Image", name: "header", widget: "image", required: false }
-          - label: "Gallery Images"
-            name: "gallery"
-            widget: "list"
-            field: { label: "Image", name: "image", widget: "image" }
-          - label: "Background"
-            name: "background"
-            widget: "object"
-            fields:
-              - { label: "bg1 (Top)",     name: "bg1",    widget: "string", default: "#1a0030" }
-              - { label: "bg2 (Bottom)",  name: "bg2",    widget: "string", default: "#320046" }
-              - { label: "surge1",        name: "surge1", widget: "string", default: "#ff2a8a" }
-              - { label: "surge2",        name: "surge2", widget: "string", default: "#1ea7ff" }
-              - { label: "surge3",        name: "surge3", widget: "string", default: "#ff3d4f" }
-              - { label: "Glitter (0–1)", name: "glitter", widget: "number", value_type: "float", min: 0, max: 1, step: 0.05, default: 0.7 }
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
