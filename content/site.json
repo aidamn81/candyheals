@@ -1,0 +1,9 @@
+{
+  "eventsText": "Club nights, corporate sparkle, weddings, hosting and more.",
+  "typesText": "Live-singing cabaret, comedy hosting, meet & greet, bingo, brunch shows.",
+  "aboutText": "Vivid colour meets gothic glam. Big looks. Bigger attitude.",
+  "showreelHTML": "<div style='position:relative;padding-top:56.25%'><iframe src='https://www.youtube.com/embed/VIDEO_ID' allowfullscreen style='position:absolute;inset:0;border:0;width:100%;height:100%'></iframe></div>",
+  "header": "/candyheader.jpg",
+  "gallery": [],
+  "background": { "bg1":"#1a0030","bg2":"#320046","surge1":"#ff2a8a","surge2":"#1ea7ff","surge3":"#ff3d4f","glitter":0.7 }
+}
