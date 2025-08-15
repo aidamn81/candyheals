@@ -300,5 +300,15 @@ function readGallery(){ try{ const a = JSON.parse(localStorage.getItem(GALLERY_K
 })();
 </script>
   <script defer src="/cms-bridge.js"></script>
+  <script>
+  // If Netlify Identity sends you back with a token in the URL hash,
+  // forward straight to the CMS and keep the hash so the flow continues.
+  (function () {
+    var h = location.hash || "";
+    if (/#(?:invite_token|confirmation_token|recovery_token|access_token)=/i.test(h)) {
+      location.replace("/admin/" + h);
+    }
+  })();
+</script>
 </body>
 </html>
