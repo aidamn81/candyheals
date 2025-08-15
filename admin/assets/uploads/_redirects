@@ -1,0 +1,5 @@
+# Only logged-in users with role "admin" can access /admin/*
+/admin/*   /admin/index.html   200!  Role=admin
+
+# Everyone else → login
+/admin/*   /login.html         302!

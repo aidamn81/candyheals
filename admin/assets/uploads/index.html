@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Candy Heals — Site</title>
+<meta name="color-scheme" content="dark">
+<style>
+:root{
+  --ink:#fff8fb; --ink-dim:#e9d8e8;
+  --bg1:#1a0030; --bg2:#320046;
+  --surge1:#ff2a8a; --surge2:#1ea7ff; --surge3:#ff3d4f;
+  --glass:#ffffff12; --stroke:#ffffff33; --sparkle:#ffffff; --sparkle2:#bde0ff;
+  --glitterOpacity:.7;
+  --liquidAlpha:.40;
+  --liquidAlphaHover:.62;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink); background:#000; overflow-x:hidden;
+  font-family: ui-rounded, Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+.admin-link{
+  position:fixed; top:8px; right:10px; z-index:1200;
+  font:700 11px/1.1 ui-rounded,Poppins,system-ui,sans-serif;
+  text-transform:uppercase; letter-spacing:.12em;
+  padding:6px 8px; border-radius:10px; color:#fff; text-decoration:none;
+  background:linear-gradient(135deg,#ff2a8a80,#1ea7ff80);
+  border:1px solid #ffffff45; backdrop-filter:blur(8px) saturate(160%);
+  opacity:.75; transition:opacity .2s, transform .2s;
+}
+.admin-link:hover{opacity:1;transform:translateY(-1px)}
+.stage{
+  position:fixed; inset:0; z-index:-4;
+  background:
+    radial-gradient(1200px 800px at 15% -10%, var(--surge1) 0%, transparent 60%),
+    radial-gradient(1200px 800px at 85% 110%, var(--surge2) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 50% 30%, color-mix(in oklab, var(--surge3) 70%, transparent) 0%, transparent 64%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+  filter:saturate(120%); animation:hue 24s linear infinite;
+}
+@keyframes hue{to{filter:hue-rotate(360deg) saturate(120%)}}
+.bokeh,.bokeh::before,.bokeh::after{
+  content:""; position:fixed; inset:-8vh; z-index:-3; pointer-events:none;
+  background:
+    radial-gradient(180px 180px at 12% 30%, #ffffff12, #0000 60%),
+    radial-gradient(260px 260px at 82% 18%, #e9b1ff10, #0000 60%),
+    radial-gradient(220px 220px at 35% 78%, #b3d9ff10, #0000 60%),
+    radial-gradient(160px 160px at 62% 55%, #ffffff08, #0000 60%);
+  filter:blur(1.2px); animation:drift 28s ease-in-out infinite alternate;
+}
+.bokeh::before{animation-duration:36s;opacity:.8}
+.bokeh::after{animation-duration:44s;opacity:.6}
+@keyframes drift{to{transform:translateY(-3vh) translateX(1.2vw)}}
+.glitter,.glitter::before,.glitter::after{
+  content:""; position:fixed; inset:-12vh; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(1.4px 1.4px at 9% 22%, var(--sparkle) 40%, #0000 45%),
+    radial-gradient(1.1px 1.1px at 28% 78%, var(--sparkle2) 40%, #0000 45%),
+    radial-gradient(1.2px 1.2px at 46% 35%, var(--sparkle) 40%, #0000 45%),
+    radial-gradient(1.6px 1.6px at 66% 58%, var(--sparkle2) 40%, #0000 45%),
+    radial-gradient(1.3px 1.3px at 81% 42%, var(--sparkle) 40%, #0000 45%),
+    radial-gradient(1.0px 1.0px at 53% 87%, var(--sparkle2) 40%, #0000 45%);
+  mix-blend-mode:screen; opacity:var(--glitterOpacity); animation:twinkle 14s linear infinite;
+}
+.glitter::before{animation-duration:20s;opacity:calc(var(--glitterOpacity)-.2)}
+.glitter::after{animation-duration:28s;opacity:calc(var(--glitterOpacity)-.3)}
+@keyframes twinkle{to{transform:translateY(-6vh)}}
+header.navbar{
+  position:sticky; top:0; z-index:1000;
+  padding:10px clamp(10px,3vw,24px);
+  display:flex; justify-content:center; align-items:center;
+  backdrop-filter:blur(10px) saturate(140%);
+  -webkit-backdrop-filter:blur(10px) saturate(140%);
+  background:linear-gradient(180deg,#00000080,#00000000);
+}
+nav.menu{
+  display:flex; gap:12px; align-items:center; flex-wrap:nowrap;
+  overflow-x:auto; overflow-y:visible; scrollbar-width:none;
+}
+nav.menu::-webkit-scrollbar{display:none}
+.jelly{
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  min-height:46px; padding:12px 22px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; user-select:none;
+  color:#fff; font-weight:900; letter-spacing:.06em; text-transform:uppercase;
+  background:
+    radial-gradient(160% 120% at 50% 80%, rgba(255,255,255,.16), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(192,69,255,var(--liquidAlpha)), rgba(126,52,255,var(--liquidAlpha)));
+  border:1.4px solid rgba(255,255,255,.55);
+  backdrop-filter:blur(9px) saturate(180%);
+  -webkit-backdrop-filter:blur(9px) saturate(180%);
+  box-shadow:
+    inset 0 -12px 26px rgba(0,0,0,.35),
+    inset 0 14px 22px rgba(255,255,255,.18),
+    0 12px 28px rgba(140,70,255,.45),
+    0 0 26px rgba(192,69,255,.25);
+  text-shadow:0 1px 2px rgba(0,0,0,.75), 0 0 12px rgba(255,255,255,.25);
+  transition:transform .45s cubic-bezier(.2,1.6,.2,1), box-shadow .25s, border-color .25s, filter .25s, background .25s;
+}
+.jelly .glitz{position:absolute; inset:0; border-radius:inherit; pointer-events:none; overflow:hidden}
+.jelly .glitz::before{
+  content:""; position:absolute; inset:-30%; border-radius:inherit; pointer-events:none;
+  background:
+    radial-gradient(1.6px 1.6px at 18% 30%, #fff, #0000 60%),
+    radial-gradient(1.2px 1.2px at 42% 58%, #fff, #0000 60%),
+    radial-gradient(1.4px 1.4px at 66% 42%, #fff, #0000 60%),
+    radial-gradient(1.0px 1.0px at 78% 66%, #fff, #0000 60%),
+    radial-gradient(1.2px 1.2px at 32% 78%, #fff, #0000 60%);
+  opacity:.65; mix-blend-mode:screen; animation:sparkleFlow 6s linear infinite;
+}
+@keyframes sparkleFlow{0%{transform:translate(-4%,2%) rotate(0)}50%{transform:translate(4%,-3%) rotate(180deg)}100%{transform:translate(-4%,2%) rotate(360deg)}}
+.jelly::after{
+  content:""; position:absolute; left:10px; right:10px; top:6px; height:47%;
+  border-radius:18px; pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.36) 70%, rgba(255,255,255,0));
+  filter:blur(.6px);
+}
+.jelly:hover{
+  transform:translateY(-1px) scale(1.06);
+  background:
+    radial-gradient(160% 120% at 50% 80%, rgba(255,255,255,.18), rgba(255,255,255,0) 65%),
+    linear-gradient(135deg, rgba(192,69,255,var(--liquidAlphaHover)), rgba(126,52,255,var(--liquidAlphaHover)));
+}
+.jelly:active{transform:scale(.96) translateY(1px)}
+.gummy{padding:14px 28px; border-radius:24px; min-width:160px; animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.site-header{
+  background: radial-gradient(120% 80% at 50% 0%, #ff2a8a, #1a0030 70%);
+  min-height: clamp(220px, 35vw, 520px);
+  box-shadow: 0 12px 40px #0008;
+}
+.site-header img{width:100%;height:auto;display:block}
+.section{padding:40px clamp(16px,3vw,48px) 64px; text-align:center}
+.section > *{margin-left:auto;margin-right:auto}
+h2{font-variant:small-caps; letter-spacing:.14em; opacity:.95}
+.gallery{display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); max-width:1100px}
+.card{position:relative; border:1px solid var(--stroke); border-radius:14px; overflow:hidden; background:#12061d; aspect-ratio:1/1; box-shadow:0 10px 24px #0006}
+.card img{width:100%; height:100%; object-fit:cover; display:block}
+.form{
+  display:grid; gap:12px; max-width:min(720px,92vw); margin:12px auto 0;
+  background:linear-gradient(180deg,var(--glass), transparent 130%);
+  border:1px solid var(--stroke); border-radius:18px; padding:18px; box-shadow:0 10px 30px #0006; text-align:left
+}
+label{font-size:12px; opacity:.9}
+input,textarea{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--stroke);
+  background:#11071c; color:#fff; font-family:inherit; font-size:16px;
+}
+textarea{min-height:120px; resize:vertical}
+button.submit{
+  border:none; cursor:pointer; background:linear-gradient(120deg,var(--surge1),var(--surge2));
+  color:#150015; font-weight:900; letter-spacing:.08em; text-transform:uppercase;
+  padding:12px 18px; border-radius:14px; box-shadow:0 10px 28px color-mix(in oklab,var(--surge1) 35%, transparent)
+}
+small.muted{opacity:.75}
+@media (max-width:480px){
+  nav.menu{gap:8px}
+  .jelly{padding:10px 14px; border-radius:16px; font-size:12px; min-height:40px}
+  .gummy{padding:11px 16px; min-width:unset}
+}
+@media(prefers-reduced-motion:reduce){
+  .stage,.bokeh,.bokeh::before,.bokeh::after,.glitter,.glitter::before,.glitter::after,.gummy{animation:none!important}
+}
+</style>
+</head>
+<body id="top">
+  <a class="admin-link" href="/login.html" aria-label="Admin">Admin</a>
+  <div class="stage" aria-hidden="true"></div>
+  <div class="bokeh" aria-hidden="true"></div>
+  <div class="glitter" aria-hidden="true"></div>
+  <header class="navbar">
+    <nav class="menu" aria-label="Primary">
+      <a class="jelly gummy" href="#contact">Contact<span class="glitz"></span></a>
+      <a class="jelly" href="#events">Events<span class="glitz"></span></a>
+      <a class="jelly" href="#types">Entertainment Types<span class="glitz"></span></a>
+      <a class="jelly" href="#showreel">Showreel<span class="glitz"></span></a>
+      <a class="jelly" href="#about">About Me<span class="glitz"></span></a>
+    </nav>
+  </header>
+  <div class="site-header">
+    <img id="headerImg" alt="Candy Heals header" decoding="async" referrerpolicy="no-referrer">
+  </div>
+  <section id="events" class="section">
+    <h2>Events</h2>
+    <div id="eventsText" style="max-width:70ch">Club nights, corporate sparkle, weddings, hosting and more.</div>
+    <div id="gallery" class="gallery" aria-live="polite"></div>
+    <div style="margin-top:24px;">
+      <a href="#top" class="jelly" style="font-size:0.85em; padding:8px 14px;">↑ Back to Top<span class="glitz"></span></a>
+    </div>
+  </section>
+  <section id="types" class="section">
+    <h2>Entertainment Types</h2>
+    <div id="typesText" style="max-width:70ch">Live‑singing cabaret, comedy hosting, meet & greet, bingo, brunch shows.</div>
+    <div style="margin-top:24px;">
+      <a href="#top" class="jelly" style="font-size:0.85em; padding:8px 14px;">↑ Back to Top<span class="glitz"></span></a>
+    </div>
+  </section>
+  <section id="showreel" class="section">
+    <h2>Showreel</h2>
+    <div id="showreelEmbed" style="max-width:1100px">
+      <div style="position:relative;padding-top:56.25%;max-width:920px;margin-inline:auto">
+        <iframe src="https://www.youtube.com/embed/EFStKBTPK_M"
+          title="Candy Heals Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen style="position:absolute;inset:0;border:0;width:100%;height:100%"></iframe>
+      </div>
+    </div>
+    <div style="margin-top:24px;">
+      <a href="#top" class="jelly" style="font-size:0.85em; padding:8px 14px;">↑ Back to Top<span class="glitz"></span></a>
+    </div>
+  </section>
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <div id="aboutText" style="max-width:70ch">Vivid colour meets gothic glam. Big looks. Bigger attitude.</div>
+    <div style="margin-top:24px;">
+      <a href="#top" class="jelly" style="font-size:0.85em; padding:8px 14px;">↑ Back to Top<span class="glitz"></span></a>
+    </div>
+  </section>
+  <section id="contact" class="section" aria-labelledby="contactTitle">
+    <h2 id="contactTitle">Enquiry</h2>
+    <form class="form" action="https://formsubmit.co/candyheals@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://yoursite.netlify.app/thank-you.html">
+      <div>
+        <label for="name">Your Name</label>
+        <input id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required>
+      </div>
+      <div>
+        <label for="msg">Message</label>
+        <textarea id="msg" name="message" placeholder="Tell me about your event…" required></textarea>
+      </div>
+      <button class="submit" type="submit">Send Enquiry</button>
+      <small class="muted">I’ll get back to you with glitter on.</small>
+    </form>
+    <div style="margin-top:24px;">
+      <a href="#top" class="jelly" style="font-size:0.85em; padding:8px 14px;">↑ Back to Top<span class="glitz"></span></a>
+    </div>
+  </section>
+<script>
+const CONTENT_KEY='candyContentV1';
+const GALLERY_KEY='candyEventsGalleryV1';
+const BG_KEY='candyBackgroundV1';
+const HEADER_KEY='candyHeaderImageV1';
+(function(){
+  try{
+    const bg = JSON.parse(localStorage.getItem(BG_KEY)||'null');
+    if(bg){
+      const r = document.documentElement;
+      r.style.setProperty('--bg1', bg.bg1 || '#1a0030');
+      r.style.setProperty('--bg2', bg.bg2 || '#320046');
+      r.style.setProperty('--surge1', bg.surge1 || '#ff2a8a');
+      r.style.setProperty('--surge2', bg.surge2 || '#1ea7ff');
+      r.style.setProperty('--surge3', bg.surge3 || '#ff3d4f');
+      if(typeof bg.glitter === 'number') r.style.setProperty('--glitterOpacity', String(bg.glitter));
+    }
+  }catch(e){}
+})();
+(function(){
+  const img = document.getElementById('headerImg');
+  const NETLIFY_URL = '/candyheader.jpg';
+  const PCLOUD_URL = 'https://edef2.pcloud.com/DLZmG8L5EZd6as0f7ZWjPfZ7ZKKy6VkZNVZZhP0ZZmmD7ZKHZhzZIFZwXjoAF6fvO48OsOw4Wx2QFrh1svk/candyheader.jpeg';
+  function tryLoad(src, next){
+    if(!src) return next && next();
+    const probe = new Image();
+    probe.onload = ()=>{ img.src = src; };
+    probe.onerror = ()=>{ next && next(); };
+    probe.referrerPolicy='no-referrer';
+    probe.src = src;
+  }
+  try{
+    const h = JSON.parse(localStorage.getItem(HEADER_KEY)||'null');
+    if(h && h.value){ img.src = h.value; return; }
+  }catch(e){}
+  tryLoad(NETLIFY_URL, ()=>tryLoad(PCLOUD_URL));
+})();
+function readContent(){ try{ return JSON.parse(localStorage.getItem(CONTENT_KEY)) || {}; } catch(e){ return {}; } }
+function readGallery(){ try{ const a = JSON.parse(localStorage.getItem(GALLERY_KEY)||'[]'); return Array.isArray(a)?a:[]; } catch(e){ return []; } }
+(function applyContent(){
+  const c = readContent();
+  if(c.eventsText)   document.getElementById('eventsText').innerHTML = c.eventsText;
+  if(c.typesText)    document.getElementById('typesText').innerHTML  = c.typesText;
+  if(c.showreelHTML) document.getElementById('showreelEmbed').innerHTML = c.showreelHTML;
+  if(c.aboutText)    document.getElementById('aboutText').innerHTML  = c.aboutText;
+  const wrap = document.getElementById('gallery');
+  wrap.innerHTML = '';
+  readGallery().forEach(item=>{
+    const fig = document.createElement('figure');
+    fig.className = 'card';
+    fig.innerHTML = `<img src="${item.data}" alt="${item.name||'Event image'}">`;
+    wrap.appendChild(fig);
+  });
+})();
+</script>
+  <script defer src="/cms-bridge.js"></script>
+</body>
+</html>
