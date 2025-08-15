@@ -5,11 +5,8 @@ backend:
   base_url: "https://sweet-flan-5bb2d9.netlify.app/.netlify/functions"
   auth_endpoint: "oauth"
 
-media_folder: "assets/uploads"      # files saved in repo
-public_folder: "/assets/uploads"    # how files are referenced on the site
-
-media_library:
-  name: file
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 publish_mode: editorial_workflow
 
@@ -25,7 +22,7 @@ collections:
           - { label: "Events Text", name: "eventsText", widget: "text" }
           - { label: "Types Text",  name: "typesText",  widget: "text" }
           - { label: "About Text",  name: "aboutText",  widget: "text" }
-          - { label: "Showreel Embed (HTML)", name: "showreelHTML", widget: "text", hint: "Paste your YouTube/Vimeo embed HTML" }
+          - { label: "Showreel Embed (HTML)", name: "showreelHTML", widget: "text" }
           - { label: "Header Image", name: "header", widget: "image", required: false }
           - label: "Gallery Images"
             name: "gallery"
