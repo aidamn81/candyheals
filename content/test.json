@@ -1,0 +1,6 @@
+    - file: "content/test.json"
+      label: "Test"
+      name: "test"
+      format: "json"
+      fields:
+        - { label: "Hello", name: "hello", widget: "string" }
