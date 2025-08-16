@@ -1,6 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: aidamn81/candyheals
   branch: main
+  base_url: https://sweet-flan-5bb2d9.netlify.app/.netlify/functions
+  auth_endpoint: oauth
+
+site_url: https://sweet-flan-5bb2d9.netlify.app
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
@@ -13,8 +18,7 @@ collections:
         label: "Homepage"
         name: "homepage"
         format: "json"
-        editor:
-          preview: false
+        editor: { preview: false }
         fields:
           - { label: "Events Text",              name: "eventsText",   widget: "text" }
           - { label: "Entertainment Types Text", name: "typesText",    widget: "text" }
