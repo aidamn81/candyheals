@@ -4,39 +4,34 @@ backend:
 
 site_url: https://sweet-flan-5bb2d9.netlify.app
 
-media_folder: "assets/uploads"      # where uploaded files are stored in the repo
-public_folder: "/assets/uploads"    # how the site references them
-
-# Optional: enables Draft → Review → Publish
-# publish_mode: editorial_workflow
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
   - name: "site"
     label: "Site Content"
     files:
-      - file: "content/site.json"
+      - file: "content/site.json"   # EXACT path & case
         label: "Homepage"
         name: "homepage"
+        format: "json"              # <- tell CMS it's JSON
         fields:
-          - { label: "Events Text", name: "eventsText", widget: "text" }
-          - { label: "Entertainment Types Text", name: "typesText", widget: "text" }
-          - { label: "About Text", name: "aboutText", widget: "text" }
-          - { label: "Showreel HTML (YouTube embed)", name: "showreelHTML", widget: "text" }
+          - { label: "Events Text",              name: "eventsText",   widget: "text" }
+          - { label: "Entertainment Types Text", name: "typesText",    widget: "text" }
+          - { label: "About Text",               name: "aboutText",    widget: "text" }
+          - { label: "Showreel HTML",            name: "showreelHTML", widget: "text" }
 
           - label: "Header Image"
             name: "header"
             widget: "image"
             default: "/candyheader.jpg"
-            media_folder: "assets/uploads"
-            public_folder: "/assets/uploads"
 
-          # Gallery = list of images (array of image paths)
+          # For now this saves a list of image paths.
           - label: "Gallery"
             name: "gallery"
             widget: "list"
-            field: { label: "Image", name: "image", widget: "image" }
+            field: { label: "Image path", name: "item", widget: "image" }
 
-          # Site background colours + glitter strength
           - label: "Background"
             name: "background"
             widget: "object"
