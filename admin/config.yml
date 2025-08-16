@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: https://sweet-flan-5bb2d9.netlify.app
-
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
@@ -20,25 +18,18 @@ collections:
           - { label: "Entertainment Types Text", name: "typesText",    widget: "text" }
           - { label: "About Text",               name: "aboutText",    widget: "text" }
           - { label: "Showreel HTML",            name: "showreelHTML", widget: "text" }
-
-          - label: "Header Image"
-            name: "header"
-            widget: "image"
-            default: "/candyheader.jpg"
-
-          # Saves a list of image paths into "gallery": []
+          - { label: "Header Image",             name: "header",       widget: "image", default: "/candyheader.jpg" }
           - label: "Gallery"
             name: "gallery"
             widget: "list"
             field: { label: "Image", name: "item", widget: "image" }
-
           - label: "Background"
             name: "background"
             widget: "object"
             fields:
-              - { label: "bg1",     name: "bg1",     widget: "string", default: "#1a0030" }
-              - { label: "bg2",     name: "bg2",     widget: "string", default: "#320046" }
-              - { label: "surge1",  name: "surge1",  widget: "string", default: "#ff2a8a" }
-              - { label: "surge2",  name: "surge2",  widget: "string", default: "#1ea7ff" }
-              - { label: "surge3",  name: "surge3",  widget: "string", default: "#ff3d4f" }
+              - { label: "bg1", name: "bg1", widget: "string", default: "#1a0030" }
+              - { label: "bg2", name: "bg2", widget: "string", default: "#320046" }
+              - { label: "surge1", name: "surge1", widget: "string", default: "#ff2a8a" }
+              - { label: "surge2", name: "surge2", widget: "string", default: "#1ea7ff" }
+              - { label: "surge3", name: "surge3", widget: "string", default: "#ff3d4f" }
               - { label: "Glitter (0–1)", name: "glitter", widget: "number", value_type: "float", min: 0, max: 1, step: 0.05, default: 0.7 }
