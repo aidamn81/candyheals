@@ -11,10 +11,10 @@ collections:
   - name: "site"
     label: "Site Content"
     files:
-      - file: "content/site.json"   # EXACT path & case
+      - file: "content/site.json"
         label: "Homepage"
         name: "homepage"
-        format: "json"              # <- tell CMS it's JSON
+        format: "json"
         fields:
           - { label: "Events Text",              name: "eventsText",   widget: "text" }
           - { label: "Entertainment Types Text", name: "typesText",    widget: "text" }
@@ -26,11 +26,11 @@ collections:
             widget: "image"
             default: "/candyheader.jpg"
 
-          # For now this saves a list of image paths.
+          # Saves a list of image paths into "gallery": []
           - label: "Gallery"
             name: "gallery"
             widget: "list"
-            field: { label: "Image path", name: "item", widget: "image" }
+            field: { label: "Image", name: "item", widget: "image" }
 
           - label: "Background"
             name: "background"
