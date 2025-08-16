@@ -13,6 +13,8 @@ collections:
         label: "Homepage"
         name: "homepage"
         format: "json"
+        editor:
+          preview: false
         fields:
           - { label: "Events Text",              name: "eventsText",   widget: "text" }
           - { label: "Entertainment Types Text", name: "typesText",    widget: "text" }
