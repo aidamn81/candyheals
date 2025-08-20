@@ -14,12 +14,10 @@ collections:
         name: "homepage"
         fields:
           - { label: "Events Text", name: "eventsText", widget: "text" }
-          - { label: "Types Text", name: "typesText", widget: "text" }
-          - { label: "About Text", name: "aboutText", widget: "text" }
+          - { label: "Types Text",  name: "typesText",  widget: "text" }
+          - { label: "About Text",  name: "aboutText",  widget: "text" }
           - { label: "Showreel HTML", name: "showreelHTML", widget: "text" }
-          - label: "Header Image"
-            name: "header"
-            widget: "image"
+          - { label: "Header Image", name: "header", widget: "image" }
           - label: "Background"
             name: "background"
             widget: "object"
