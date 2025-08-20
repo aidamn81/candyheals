@@ -1,32 +1,21 @@
-# ==== Decap (Netlify CMS) config ====
-
-# Use Netlify Identity + Git Gateway (no manual tokens needed)
 backend:
   name: git-gateway
   branch: main
 
-# Optional but helpful
 site_url: https://sweet-flan-5bb2d9.netlify.app
 logo_url: https://sweet-flan-5bb2d9.netlify.app/candyheader.jpg
 
-# Where uploaded files are stored in your repo
-media_folder: "assets/uploads"      # folder in the repo
-public_folder: "/assets/uploads"    # how the site refers to them
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
-# Make the default "file" media library explicit (avoids the old error)
 media_library:
   name: file
 
-# If you want drafts/review, uncomment next line:
-# publish_mode: editorial_workflow
-
-# Single-file collection that edits content/site.json
 collections:
   - name: "site"
     label: "Site Content"
     delete: false
-    editor:
-      preview: false
+    editor: { preview: false }
     files:
       - file: "content/site.json"
         label: "Homepage"
@@ -35,21 +24,14 @@ collections:
           - { label: "Events Text", name: "eventsText", widget: "text" }
           - { label: "Entertainment Types Text", name: "typesText", widget: "text" }
           - { label: "About Text", name: "aboutText", widget: "text" }
-          - { label: "Showreel (paste iframe or HTML)", name: "showreelHTML", widget: "text" }
-
-          # Header image used by the site; you can upload a new one here
+          - { label: "Showreel (iframe or HTML)", name: "showreelHTML", widget: "text" }
           - { label: "Header Image", name: "header", widget: "image", allow_multiple: false }
-
-          # Simple gallery (list of images). If you don’t need it, you can remove this.
           - label: "Gallery"
             name: "gallery"
             widget: "list"
-            summary: "{{fields.image}}"
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt text", name: "alt", widget: "string", required: false }
-
-          # Background theme controls used by your page JS
           - label: "Background"
             name: "background"
             widget: "object"
