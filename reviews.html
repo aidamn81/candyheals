@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Candy Heals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b0214;
+            color: #f0e6f6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 20px;
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.95), rgba(11, 2, 20, 0.8));
+            z-index: 100;
+        }
+
+        .nav-bar a {
+            color: #d8b4fe;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            background: rgba(46, 16, 101, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            color: #ffffff;
+            background: rgba(76, 29, 149, 0.6);
+            border-color: rgba(236, 72, 153, 0.6);
+            text-shadow: 0 0 10px #ec4899, 0 0 20px #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Sections Styling */
+        section {
+            position: relative;
+            padding: 130px 20px 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #0b0214;
+            border-top: 1px solid #2e1065;
+            text-align: center;
+        }
+
+        section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #f472b6;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            color: #c084fc;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* Reviews Grid */
+        .reviews-container {
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .review-card {
+            background: rgba(18, 3, 32, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .reviewer-name {
+            font-family: 'Cinzel', serif;
+            color: #f3e8ff;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .review-stars {
+            color: #f472b6;
+            letter-spacing: 3px;
+        }
+
+        .review-text {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .review-event {
+            font-size: 0.85rem;
+            color: #a855f7;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Action Buttons Container */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #7e22ce, #db2777);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            padding: 12px 24px;
+            background: rgba(46, 16, 101, 0.4);
+            color: #d8b4fe;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(76, 29, 149, 0.6);
+            color: #fff;
+            border-color: #ec4899;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Modals Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 2, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #120320;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 10px;
+            padding: 35px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+            position: relative;
+            text-align: left;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            font-family: 'Cinzel', serif;
+            color: #f472b6;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #d8b4fe;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Cinzel', serif;
+        }
+
+        .close-modal:hover {
+            color: #ec4899;
+        }
+
+        /* Forms inside modal */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-family: 'Cinzel', serif;
+            color: #d8b4fe;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(11, 2, 20, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 6px;
+            color: #f0e6f6;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Admin platform specific styles */
+        .admin-review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 2, 20, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+
+        .admin-review-info h4 {
+            font-family: 'Cinzel', serif;
+            color: #f3e8ff;
+            font-size: 1rem;
+        }
+
+        .admin-review-info p {
+            color: #9ca3af;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .delete-btn {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .delete-btn:hover {
+            background: rgba(220, 38, 38, 0.6);
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+            color: #d8b4fe;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            background: rgba(46, 16, 101, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+        }
+
+        .back-to-top:hover {
+            color: #ffffff;
+            background: rgba(76, 29, 149, 0.8);
+            border-color: rgba(236, 72, 153, 0.6);
+            text-shadow: 0 0 10px #ec4899;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar {
+                gap: 8px;
+                padding: 10px;
+            }
+            .nav-bar a {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+            section {
+                padding-top: 140px;
+            }
+            .modal-content {
+                padding: 20px;
+            }
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- Top Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html#showreel">Showreel</a>
+        <a href="events.html">Events</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#performance-types">Performance Types</a>
+        <a href="celebrant-ceremonies.html">Celebrant Ceremonies</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="index.html#about">About Me</a>
+        <a href="merchandise.html">Merchandise</a>
+    </nav>
+
+    <!-- Reviews Section -->
+    <section id="reviews-section">
+        <h2>Client Reviews</h2>
+        <p class="subtitle">Verified Feedback from Entertainers Worldwide & Guests</p>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="openReviewModal()">Write a Review</button>
+            <a href="https://www.entertainersworldwide.com/candy-heals-profile-155489" target="_blank" class="btn-secondary">View Profile on EW</a>
+            <button class="btn-secondary" onclick="openAdminModal()">Admin Panel</button>
+        </div>
+
+        <!-- Reviews List Container -->
+        <div class="reviews-container" id="reviewsContainer">
+            <!-- Dynamic and Static Reviews Render Here -->
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">Hugo</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">Candy was as professional as they come! Their crowd work was amazing... I think that is a testament to Candy's skills as a world-class entertainer.</p>
+                <span class="review-event">Birthday Party / Zebrano Drag Brunch</span>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="reviewer-name">Out News Global</span>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+                <p class="review-text">Candy was lovely. Full of fun, humour and a natural entertainer. She sang some great anthems, and got the party rocking...</p>
+                <span class="review-event">Football Club Event</span>
+            </div>
+        </div>
+
+        <a href="#top" class="back-to-top">Back to Top ↑</a>
+    </section>
+
+    <!-- Write a Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeReviewModal()">&times;</button>
+            <h3>Write a Review</h3>
+            <form id="submitReviewForm" onsubmit="handleReviewSubmission(event)">
+                <div class="form-group">
+                    <label for="reviewerName">Your Name</label>
+                    <input type="text" id="reviewerName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="reviewEvent">Event Type / Occasion</label>
+                    <input type="text" id="reviewEvent" required placeholder="e.g. Wedding Reception, Drag Brunch">
+                </div>
+                <div class="form-group">
+                    <label for="reviewRating">Rating</label>
+                    <select id="reviewRating">
+                        <option value="★★★★★">5 Stars - ★★★★★</option>
+                        <option value="★★★★☆">4 Stars - ★★★★☆</option>
+                        <option value="★★★☆☆">3 Stars - ★★★☆☆</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reviewMessage">Your Message</label>
+                    <textarea id="reviewMessage" rows="4" required placeholder="Share your experience working with Candy..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Platform Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeAdminModal()">&times;</button>
+            <h3>Admin Platform</h3>
+            <div id="adminAuthContainer">
+                <p style="color: #d1d5db; margin-bottom: 15px; font-size: 0.9rem;">Enter admin passcode to manage reviews (Default: <code>candy123</code>)</p>
+                <div class="form-group">
+                    <label for="adminPasscode">Passcode</label>
+                    <input type="password" id="adminPasscode" placeholder="Enter passcode">
+                </div>
+                <button type="button" class="btn-primary" style="width: 100%;" onclick="verifyAdmin()">Login</button>
+            </div>
+            
+            <div id="adminPanelContent" style="display: none;">
+                <p style="color: #c084fc; margin-bottom: 20px; font-family: 'Cinzel', serif;">Manage & Delete Customer Reviews:</p>
+                <div id="adminReviewsList">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // LocalStorage Review Sync System
+        const defaultReviews = [
+            {
+                id: 'rev-1',
+                name: 'Hugo',
+                rating: '★★★★★',
+                event: 'Birthday Party / Zebrano Drag Brunch',
+                text: "Candy was as professional as they come! Their crowd work was amazing... I think that is a testament to Candy's skills as a world-class entertainer."
+            },
+            {
+                id: 'rev-2',
+                name: 'Out News Global',
+                rating: '★★★★★',
+                event: 'Football Club Event',
+                text: "Candy was lovely. Full of fun, humour and a natural entertainer. She sang some great anthems, and got the party rocking..."
+            }
+        ];
+
+        function getStoredReviews() {
+            const data = localStorage.getItem('candy_heals_reviews');
+            return data ? JSON.parse(data) : defaultReviews;
+        }
+
+        function saveStoredReviews(reviews) {
+            localStorage.setItem('candy_heals_reviews', JSON.stringify(reviews));
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            const reviews = getStoredReviews();
+            
+            container.innerHTML = '';
+            reviews.forEach(rev => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
+                    <div class="review-header">
+                        <span class="reviewer-name">${escapeHtml(rev.name)}</span>
+                        <span class="review-stars">${rev.rating}</span>
+                    </div>
+                    <p class="review-text">${escapeHtml(rev.text)}</p>
+                    <span class="review-event">${escapeHtml(rev.event)}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Modal Controls
+        function openReviewModal() {
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+        function closeReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+            document.getElementById('adminAuthContainer').style.display = 'block';
+            document.getElementById('adminPanelContent').style.display = 'none';
+            document.getElementById('adminPasscode').value = '';
+        }
+
+        // Handle New Review Submission
+        function handleReviewSubmission(event) {
+            event.preventDefault();
+            const name = document.getElementById('reviewerName').value;
+            const eventType = document.getElementById('reviewEvent').value;
+            const rating = document.getElementById('reviewRating').value;
+            const text = document.getElementById('reviewMessage').value;
+
+            const newReview = {
+                id: 'rev-' + Date.now(),
+                name,
+                rating,
+                event: eventType,
+                text
+            };
+
+            const reviews = getStoredReviews();
+            reviews.unshift(newReview); // Add to top
+            saveStoredReviews(reviews);
+            renderReviews();
+
+            document.getElementById('submitReviewForm').reset();
+            closeReviewModal();
+            alert('Thank you! Your review has been submitted successfully.');
+        }
+
+        // Admin Authentication & Deletion
+        function verifyAdmin() {
+            const passcode = document.getElementById('adminPasscode').value;
+            if (passcode === 'candy123') {
+                document.getElementById('adminAuthContainer').style.display = 'none';
+                document.getElementById('adminPanelContent').style.display = 'block';
+                renderAdminList();
+            } else {
+                alert('Incorrect passcode. Try again.');
+            }
+        }
+
+        function renderAdminList() {
+            const listContainer = document.getElementById('adminReviewsList');
+            const reviews = getStoredReviews();
+            
+            listContainer.innerHTML = '';
+            if (reviews.length === 0) {
+                listContainer.innerHTML = '<p style="color: #9ca3af;">No reviews available to manage.</p>';
+                return;
+            }
+
+            reviews.forEach(rev => {
+                const item = document.createElement('div');
+                item.className = 'admin-review-item';
+                item.innerHTML = `
+                    <div class="admin-review-info">
+                        <h4>${escapeHtml(rev.name)} (${rev.rating})</h4>
+                        <p>${escapeHtml(rev.event)} — "${escapeHtml(rev.text.substring(0, 50))}..."</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteReview('${rev.id}')">Delete</button>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        function deleteReview(id) {
+            if (confirm('Are you sure you want to delete this review?')) {
+                let reviews = getStoredReviews();
+                reviews = reviews.filter(rev => rev.id !== id);
+                saveStoredReviews(reviews);
+                renderReviews();
+                renderAdminList();
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        // Initialize page load
+        window.onload = function() {
+            renderReviews();
+        }
+    </script>
+</body>
+</html>
