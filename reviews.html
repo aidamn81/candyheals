@@ -336,8 +336,8 @@
             border-color: #ef4444;
         }
 
-        /* Back to Top Button */
-        .back-to-top {
+        /* Home Button (Bottom Right) */
+        .home-btn {
             position: absolute;
             bottom: 25px;
             right: 30px;
@@ -357,7 +357,7 @@
             box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
         }
 
-        .back-to-top:hover {
+        .home-btn:hover {
             color: #ffffff;
             background: rgba(76, 29, 149, 0.8);
             border-color: rgba(236, 72, 153, 0.6);
@@ -381,7 +381,7 @@
             .modal-content {
                 padding: 20px;
             }
-            .back-to-top {
+            .home-btn {
                 bottom: 15px;
                 right: 15px;
                 font-size: 0.75rem;
@@ -438,7 +438,7 @@
             </div>
         </div>
 
-        <a href="#top" class="back-to-top">Back to Top ↑</a>
+        <a href="index.html" class="home-btn">Home</a>
     </section>
 
     <!-- Write a Review Modal -->
@@ -478,7 +478,7 @@
             <button class="close-modal" onclick="closeAdminModal()">&times;</button>
             <h3>Admin Platform</h3>
             <div id="adminAuthContainer">
-                <p style="color: #d1d5db; margin-bottom: 15px; font-size: 0.9rem;">Enter admin passcode to manage reviews (Default: <code>candy123</code>)</p>
+                <p style="color: #d1d5db; margin-bottom: 15px; font-size: 0.9rem;">Enter admin passcode to manage reviews (Default: <code>candy1981</code>)</p>
                 <div class="form-group">
                     <label for="adminPasscode">Passcode</label>
                     <input type="password" id="adminPasscode" placeholder="Enter passcode">
@@ -590,7 +590,7 @@
         // Admin Authentication & Deletion
         function verifyAdmin() {
             const passcode = document.getElementById('adminPasscode').value;
-            if (passcode === 'candy123') {
+            if (passcode === 'candy1981') {
                 document.getElementById('adminAuthContainer').style.display = 'none';
                 document.getElementById('adminPanelContent').style.display = 'block';
                 renderAdminList();
