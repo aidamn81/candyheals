@@ -99,11 +99,30 @@
             letter-spacing: 2px;
         }
 
-        /* Events Grid / Feed Container */
-        .events-feed {
+        /* Content Layout Sections */
+        .content-section {
             width: 100%;
             max-width: 900px;
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #f472b6;
+            text-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Events Grid / Feed Container */
+        .events-feed {
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 25px;
@@ -169,6 +188,20 @@
             box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
         }
 
+        /* Instagram Feed Widget Styles */
+        .instagram-container {
+            background: rgba(18, 3, 32, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(5px);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
@@ -213,7 +246,7 @@
             .page-container {
                 padding-top: 150px;
             }
-            .event-card {
+            .event-card, .instagram-container {
                 padding: 18px;
             }
             .back-to-top {
@@ -242,35 +275,48 @@
     <!-- Events Page Content -->
     <div class="page-container">
         <div class="events-header">
-            <h1 class="events-title">Upcoming Events</h1>
-            <p class="events-subtitle">Catch Candy live on stage, at cabaret shows, and special appearances</p>
+            <h1 class="events-title">Events & Updates</h1>
+            <p class="events-subtitle">Catch Candy live on stage and check out the latest announcements</p>
         </div>
 
-        <!-- Events Feed Container (Dynamic JSON integration point) -->
-        <div class="events-feed" id="events-container">
-            
-            <!-- Sample Event Card 1 -->
-            <div class="event-card">
-                <div class="event-date">Friday, August 14, 2026 • 8:00 PM</div>
-                <div class="event-name">Dark Cabaret Night Live</div>
-                <div class="event-description">A spellbinding evening of live vocals, theatrical flair, and dark immersive entertainment. Join us for a night of pure gothic elegance and unmatched energy.</div>
-                <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
-            </div>
+        <!-- Section 1: Upcoming Events Feed (Dynamic JSON integration) -->
+        <div class="content-section">
+            <h2 class="section-heading">Upcoming Events</h2>
+            <div class="events-feed" id="events-container">
+                
+                <!-- Sample Event Card 1 -->
+                <div class="event-card">
+                    <div class="event-date">Friday, August 14, 2026 • 8:00 PM</div>
+                    <div class="event-name">Dark Cabaret Night Live</div>
+                    <div class="event-description">A spellbinding evening of live vocals, theatrical flair, and dark immersive entertainment. Join us for a night of pure gothic elegance and unmatched energy.</div>
+                    <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
+                </div>
 
-            <!-- Sample Event Card 2 -->
-            <div class="event-card">
-                <div class="event-date">Saturday, August 29, 2026 • 7:30 PM</div>
-                <div class="event-name">Theatrical Bingo & Show</div>
-                <div class="event-description">Sass, sparkle, prizes, and unforgettable live numbers! Get ready for a high-octane twist on classic bingo hosted by Candy Heals.</div>
-                <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
-            </div>
+                <!-- Sample Event Card 2 -->
+                <div class="event-card">
+                    <div class="event-date">Saturday, August 29, 2026 • 7:30 PM</div>
+                    <div class="event-name">Theatrical Bingo & Show</div>
+                    <div class="event-description">Sass, sparkle, prizes, and unforgettable live numbers! Get ready for a high-octane twist on classic bingo hosted by Candy Heals.</div>
+                    <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
+                </div>
 
+            </div>
         </div>
+
+        <!-- Section 2: Live Instagram / Social Feed -->
+        <div class="content-section">
+            <h2 class="section-heading">Latest From Instagram</h2>
+            <div class="instagram-container" id="ft-insta-app">
+                <!-- Free Instagram widget embed placeholder (Replace 'your-free-widget-key' with your actual widget key from a free provider like Fouita or Instaplug) -->
+                <p style="color: #c084fc; font-style: italic; text-align: center;">Loading live social updates...</p>
+            </div>
+        </div>
+
     </div>
 
     <a href="#top" class="back-to-top">Back to Top ↑</a>
 
-    <!-- JavaScript to Fetch Dynamic Event & Post Updates from an events.json file -->
+    <!-- JavaScript to Fetch Dynamic Event Updates from events.json -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             fetch('events.json')
@@ -303,6 +349,24 @@
                 });
         });
     </script>
+
+    <!-- Optional: Instagram Widget Script Integration -->
+    <!-- 
+    <script type="module">
+      import App from "https://cdn.fouita.com/public/instagram-feed.js";
+      new App({
+        target: document.getElementById("ft-insta-app"),
+        props: {
+          "settings": {
+            "layout": "grid",
+            "header": false,
+            "cols": 3,
+            "ukey": "your-free-widget-key"
+          }
+        }
+      });
+    </script> 
+    -->
 
 </body>
 </html>
