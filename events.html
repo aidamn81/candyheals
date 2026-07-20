@@ -130,6 +130,7 @@
             backdrop-filter: blur(5px);
             min-height: 250px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
@@ -214,30 +215,16 @@
         <!-- Live Instagram / Social Feed Section -->
         <div class="content-section">
             <h2 class="section-heading">Latest From Instagram</h2>
-            <div class="instagram-container" id="ft-insta-app">
-                <!-- Replace 'your-free-widget-key' below once you create your free widget connection -->
-                <p style="color: #c084fc; font-style: italic; text-align: center;">Loading live social updates...</p>
+            <div class="instagram-container">
+                <div data-key="Grid Instagram Feed " class="ft" id="ft64qoj5t"></div>
             </div>
         </div>
     </div>
 
     <a href="#top" class="back-to-top">Back to Top ↑</a>
 
-    <!-- Instagram Widget Script Integration -->
-    <script type="module">
-      import App from "https://cdn.fouita.com/public/instagram-feed.js";
-      new App({
-        target: document.getElementById("ft-insta-app"),
-        props: {
-          "settings": {
-            "layout": "grid",
-            "header": false,
-            "cols": 3,
-            "ukey": "your-free-widget-key"
-          }
-        }
-      });
-    </script>
+    <!-- Fouita Instagram Widget Script -->
+    <script src="https://wdg.fouita.com/widgets/0x4df0c4.js"></script>
 
 </body>
 </html>
