@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Heals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Cinzel', 'Times New Roman', serif, sans-serif;
+            background-color: #0b0214;
+            color: #f0e6f6;
+            overflow-x: hidden;
+        }
+
+        /* Background and Main Layout */
+        .hero-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.9), rgba(11, 2, 20, 0));
+            z-index: 100;
+        }
+
+        .nav-bar a {
+            color: #d8b4fe;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ec4899, 0 0 20px #8b5cf6;
+        }
+
+        /* Portrait & Frame Container */
+        .portrait-wrapper {
+            position: relative;
+            width: 320px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .portrait-image {
+            position: absolute;
+            width: 78%;
+            height: 78%;
+            object-fit: cover;
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .portrait-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #120320;
+            border-top: 1px solid #2e1065;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f472b6;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+        }
+
+        section p {
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        #showreel {
+            background-color: #0b0214;
+        }
+
+        #contact {
+            background-color: #0b0214;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar {
+                gap: 10px;
+                padding: 10px;
+            }
+            .nav-bar a {
+                font-size: 0.8rem;
+            }
+            .portrait-wrapper {
+                width: 260px;
+                height: 365px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="nav-bar">
+        <a href="#showreel">Showreel</a>
+        <a href="events.html">Events</a>
+        <a href="#contact">Contact</a>
+        <a href="performance-types.html">Performance Types</a>
+        <a href="celebrant-ceremonies.html">Celebrant Ceremonies</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="#about">About Me</a>
+        <a href="merchandise.html">Merchandise</a>
+    </nav>
+
+    <!-- Hero Section with Layered Portrait and Frame -->
+    <div class="hero-container">
+        <div class="portrait-wrapper">
+            <img src="portrait.jpg" alt="Candy Heals Portrait" class="portrait-image">
+            <img src="frame.png" alt="Ornate Gothic Frame" class="portrait-frame">
+        </div>
+    </div>
+
+    <!-- Showreel Section -->
+    <section id="showreel">
+        <h2>Showreel</h2>
+        <p>Experience the theatrical flair, live vocals, and unforgettable stage presence. Watch the highlights below.</p>
+        <!-- Embed video or player elements here -->
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Welcome to the glamorous and theatrical world of live performance, dazzling vocal execution, and unmistakable dark elegance.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>For bookings, professional inquiries, collaborations, and custom event packages, get in touch below.</p>
+    </section>
+
+</body>
+</html>
