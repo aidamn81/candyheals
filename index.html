@@ -118,6 +118,7 @@
             font-size: 1.1rem;
             line-height: 1.6;
             color: #d1d5db;
+            margin-bottom: 30px;
         }
 
         #showreel {
@@ -126,6 +127,27 @@
 
         #contact {
             background-color: #0b0214;
+        }
+
+        /* Responsive Video Container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #4c1d95;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Responsive Design */
@@ -170,7 +192,9 @@
     <section id="showreel">
         <h2>Showreel</h2>
         <p>Experience the theatrical flair, live vocals, and unforgettable stage presence. Watch the highlights below.</p>
-        <!-- Embed video or player elements here -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/EFStKBTPK_M" title="SHOWREEL - CANDY HEALS - LONDON DRAG QUEEN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
     <!-- About Me Section -->
