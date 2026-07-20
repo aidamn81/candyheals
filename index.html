@@ -167,6 +167,77 @@
             background-color: #0b0214;
         }
 
+        /* Contact Form Styles */
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: rgba(18, 3, 32, 0.6);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-family: 'Cinzel', serif;
+            color: #d8b4fe;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(11, 2, 20, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 6px;
+            color: #f0e6f6;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+        }
+
+        .submit-btn {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #7e22ce, #db2777);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+            transform: translateY(-2px);
+        }
+
         /* Responsive Video Container */
         .video-container {
             position: relative;
@@ -204,6 +275,9 @@
             .portrait-wrapper {
                 width: 240px;
                 height: 335px;
+            }
+            .contact-form {
+                padding: 20px;
             }
         }
     </style>
@@ -252,6 +326,21 @@
     <section id="contact">
         <h2>Contact</h2>
         <p>For bookings, professional inquiries, collaborations, and custom event packages, get in touch below.</p>
+        <form class="contact-form" action="mailto:info@candyheals.com" method="POST" enctype="text/plain">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="Name" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="Email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="Message" rows="5" required placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
     </section>
 
 </body>
