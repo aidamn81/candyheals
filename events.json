@@ -1,16 +1,230 @@
-[
-  {
-    "date": "Friday, August 14, 2026 • 8:00 PM",
-    "title": "Dark Cabaret Night Live",
-    "description": "A spellbinding evening of live vocals, theatrical flair, and dark immersive entertainment. Join us for a night of pure gothic elegance and unmatched energy.",
-    "link": "index.html#contact",
-    "linkText": "Book Tickets / Info"
-  },
-  {
-    "date": "Saturday, August 29, 2026 • 7:30 PM",
-    "title": "Theatrical Bingo & Show",
-    "description": "Sass, sparkle, prizes, and unforgettable live numbers! Get ready for a high-octane twist on classic bingo hosted by Candy Heals.",
-    "link": "index.html#contact",
-    "linkText": "Book Tickets / Info"
-  }
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Updates - Candy Heals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b0214;
+            color: #f0e6f6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 20px;
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.95), rgba(11, 2, 20, 0.8));
+            z-index: 100;
+        }
+
+        .nav-bar a {
+            color: #d8b4fe;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            background: rgba(46, 16, 101, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            color: #ffffff;
+            background: rgba(76, 29, 149, 0.6);
+            border-color: rgba(236, 72, 153, 0.6);
+            text-shadow: 0 0 10px #ec4899, 0 0 20px #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Events Content Layout */
+        .page-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background-color: #0b0214;
+        }
+
+        .events-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .events-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #f472b6;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .events-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 600;
+            color: #c084fc;
+            letter-spacing: 2px;
+        }
+
+        /* Content Layout Sections */
+        .content-section {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #f472b6;
+            text-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Instagram Feed Widget Styles */
+        .instagram-container {
+            background: rgba(18, 3, 32, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(5px);
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 30px;
+            color: #d8b4fe;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            background: rgba(46, 16, 101, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+            z-index: 99;
+        }
+
+        .back-to-top:hover {
+            color: #ffffff;
+            background: rgba(76, 29, 149, 0.8);
+            border-color: rgba(236, 72, 153, 0.6);
+            text-shadow: 0 0 10px #ec4899;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-bar {
+                gap: 8px;
+                padding: 10px;
+            }
+            .nav-bar a {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+            .page-container {
+                padding-top: 150px;
+            }
+            .instagram-container {
+                padding: 18px;
+            }
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- Top Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html#showreel">Showreel</a>
+        <a href="events.html">Events</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#performance-types">Performance Types</a>
+        <a href="celebrant-ceremonies.html">Celebrant Ceremonies</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="index.html#about">About Me</a>
+        <a href="merchandise.html">Merchandise</a>
+    </nav>
+
+    <!-- Events & Updates Page Content -->
+    <div class="page-container">
+        <div class="events-header">
+            <h1 class="events-title">Updates & Feed</h1>
+            <p class="events-subtitle">Catch Candy's latest posts and announcements straight from Instagram</p>
+        </div>
+
+        <!-- Live Instagram / Social Feed Section -->
+        <div class="content-section">
+            <h2 class="section-heading">Latest From Instagram</h2>
+            <div class="instagram-container">
+                <div data-key="Grid Instagram Feed " class="ft" id="ft3u4ua9a"></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#top" class="back-to-top">Back to Top ↑</a>
+
+    <!-- Fouita Instagram Widget Script -->
+    <script src="https://wdg.fouita.com/widgets/0x4df0f3.js"></script>
+
+</body>
+</html>
