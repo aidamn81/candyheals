@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Candy Heals</title>
+    <title>Events & Updates - Candy Heals</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -120,74 +120,6 @@
             margin-bottom: 5px;
         }
 
-        /* Events Grid / Feed Container */
-        .events-feed {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .event-card {
-            background: rgba(18, 3, 32, 0.7);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .event-card:hover {
-            border-color: rgba(236, 72, 153, 0.6);
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .event-date {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            color: #ec4899;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .event-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #f3e8ff;
-        }
-
-        .event-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #d1d5db;
-        }
-
-        .event-link {
-            align-self: flex-start;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: #d8b4fe;
-            text-decoration: none;
-            padding: 6px 14px;
-            background: rgba(46, 16, 101, 0.6);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            margin-top: 5px;
-        }
-
-        .event-link:hover {
-            background: rgba(76, 29, 149, 0.9);
-            color: #ffffff;
-            border-color: #ec4899;
-            box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
-        }
-
         /* Instagram Feed Widget Styles */
         .instagram-container {
             background: rgba(18, 3, 32, 0.7);
@@ -196,7 +128,7 @@
             padding: 25px;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(5px);
-            min-height: 200px;
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -246,7 +178,7 @@
             .page-container {
                 padding-top: 150px;
             }
-            .event-card, .instagram-container {
+            .instagram-container {
                 padding: 18px;
             }
             .back-to-top {
@@ -272,86 +204,26 @@
         <a href="merchandise.html">Merchandise</a>
     </nav>
 
-    <!-- Events Page Content -->
+    <!-- Events & Updates Page Content -->
     <div class="page-container">
         <div class="events-header">
-            <h1 class="events-title">Events & Updates</h1>
-            <p class="events-subtitle">Catch Candy live on stage and check out the latest announcements</p>
+            <h1 class="events-title">Updates & Feed</h1>
+            <p class="events-subtitle">Catch Candy's latest posts and announcements straight from Instagram</p>
         </div>
 
-        <!-- Section 1: Upcoming Events Feed (Dynamic JSON integration) -->
-        <div class="content-section">
-            <h2 class="section-heading">Upcoming Events</h2>
-            <div class="events-feed" id="events-container">
-                
-                <!-- Sample Event Card 1 -->
-                <div class="event-card">
-                    <div class="event-date">Friday, August 14, 2026 • 8:00 PM</div>
-                    <div class="event-name">Dark Cabaret Night Live</div>
-                    <div class="event-description">A spellbinding evening of live vocals, theatrical flair, and dark immersive entertainment. Join us for a night of pure gothic elegance and unmatched energy.</div>
-                    <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
-                </div>
-
-                <!-- Sample Event Card 2 -->
-                <div class="event-card">
-                    <div class="event-date">Saturday, August 29, 2026 • 7:30 PM</div>
-                    <div class="event-name">Theatrical Bingo & Show</div>
-                    <div class="event-description">Sass, sparkle, prizes, and unforgettable live numbers! Get ready for a high-octane twist on classic bingo hosted by Candy Heals.</div>
-                    <a href="index.html#contact" class="event-link">Book Tickets / Info</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Section 2: Live Instagram / Social Feed -->
+        <!-- Live Instagram / Social Feed Section -->
         <div class="content-section">
             <h2 class="section-heading">Latest From Instagram</h2>
             <div class="instagram-container" id="ft-insta-app">
-                <!-- Free Instagram widget embed placeholder (Replace 'your-free-widget-key' with your actual widget key from a free provider like Fouita or Instaplug) -->
+                <!-- Replace 'your-free-widget-key' below once you create your free widget connection -->
                 <p style="color: #c084fc; font-style: italic; text-align: center;">Loading live social updates...</p>
             </div>
         </div>
-
     </div>
 
     <a href="#top" class="back-to-top">Back to Top ↑</a>
 
-    <!-- JavaScript to Fetch Dynamic Event Updates from events.json -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('events.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const container = document.getElementById('events-container');
-                    if (data && data.length > 0) {
-                        container.innerHTML = ''; // Clear fallback cards
-                        data.forEach(item => {
-                            const card = document.createElement('div');
-                            card.className = 'event-card';
-                            
-                            card.innerHTML = `
-                                <div class="event-date">${item.date}</div>
-                                <div class="event-name">${item.title}</div>
-                                <div class="event-description">${item.description}</div>
-                                <a href="${item.link || 'index.html#contact'}" class="event-link">${item.linkText || 'Book Tickets / Info'}</a>
-                            `;
-                            container.appendChild(card);
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.log('Using static default events feed.');
-                });
-        });
-    </script>
-
-    <!-- Optional: Instagram Widget Script Integration -->
-    <!-- 
+    <!-- Instagram Widget Script Integration -->
     <script type="module">
       import App from "https://cdn.fouita.com/public/instagram-feed.js";
       new App({
@@ -365,8 +237,7 @@
           }
         }
       });
-    </script> 
-    -->
+    </script>
 
 </body>
 </html>
