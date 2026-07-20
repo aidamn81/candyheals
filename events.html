@@ -246,7 +246,7 @@
             <p class="events-subtitle">Catch Candy live on stage, at cabaret shows, and special appearances</p>
         </div>
 
-        <!-- Events Feed Container -->
+        <!-- Events Feed Container (Dynamic JSON integration point) -->
         <div class="events-feed" id="events-container">
             
             <!-- Sample Event Card 1 -->
@@ -269,6 +269,40 @@
     </div>
 
     <a href="#top" class="back-to-top">Back to Top ↑</a>
+
+    <!-- JavaScript to Fetch Dynamic Event & Post Updates from an events.json file -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('events.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('events-container');
+                    if (data && data.length > 0) {
+                        container.innerHTML = ''; // Clear fallback cards
+                        data.forEach(item => {
+                            const card = document.createElement('div');
+                            card.className = 'event-card';
+                            
+                            card.innerHTML = `
+                                <div class="event-date">${item.date}</div>
+                                <div class="event-name">${item.title}</div>
+                                <div class="event-description">${item.description}</div>
+                                <a href="${item.link || 'index.html#contact'}" class="event-link">${item.linkText || 'Book Tickets / Info'}</a>
+                            `;
+                            container.appendChild(card);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log('Using static default events feed.');
+                });
+        });
+    </script>
 
 </body>
 </html>
