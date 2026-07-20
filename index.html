@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candy Heals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +15,7 @@
         body, html {
             width: 100%;
             height: 100%;
-            font-family: 'Cinzel', 'Times New Roman', serif, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: #0b0214;
             color: #f0e6f6;
             overflow-x: hidden;
@@ -24,19 +25,21 @@
         .hero-container {
             position: relative;
             width: 100vw;
-            height: 100vh;
+            min-height: 100vh;
             background-image: url('background.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-top: 90px;
+            padding-bottom: 50px;
         }
 
         /* Top Navigation Bar */
         .nav-bar {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -45,13 +48,14 @@
             flex-wrap: wrap;
             gap: 20px;
             padding: 20px;
-            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.9), rgba(11, 2, 20, 0));
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.95), rgba(11, 2, 20, 0.8));
             z-index: 100;
         }
 
         .nav-bar a {
             color: #d8b4fe;
             text-decoration: none;
+            font-family: 'Cinzel', serif;
             font-size: 0.95rem;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -63,15 +67,48 @@
             text-shadow: 0 0 10px #ec4899, 0 0 20px #8b5cf6;
         }
 
+        /* Welcoming Header Text */
+        .welcome-header {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .welcome-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #f3e8ff;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 
+                         0 0 20px rgba(168, 85, 247, 0.5), 
+                         0 0 30px rgba(59, 130, 246, 0.6), 
+                         0 0 40px rgba(59, 130, 246, 0.4);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #c084fc;
+            text-shadow: 0 0 8px rgba(192, 132, 252, 0.6), 
+                         0 0 15px rgba(59, 130, 246, 0.4);
+            letter-spacing: 4px;
+        }
+
         /* Portrait & Frame Container */
         .portrait-wrapper {
             position: relative;
-            width: 320px;
-            height: 450px;
+            width: 300px;
+            height: 420px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 60px;
         }
 
         .portrait-image {
@@ -90,7 +127,7 @@
             object-fit: contain;
             z-index: 2;
             pointer-events: none;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8)) drop-shadow(0 0 15px rgba(147, 51, 234, 0.3));
         }
 
         /* Sections Styling */
@@ -107,6 +144,7 @@
         }
 
         section h2 {
+            font-family: 'Cinzel', serif;
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: #f472b6;
@@ -159,6 +197,9 @@
             .nav-bar a {
                 font-size: 0.8rem;
             }
+            .hero-container {
+                padding-top: 110px;
+            }
             .portrait-wrapper {
                 width: 260px;
                 height: 365px;
@@ -180,8 +221,12 @@
         <a href="merchandise.html">Merchandise</a>
     </nav>
 
-    <!-- Hero Section with Layered Portrait and Frame -->
+    <!-- Hero Section with Welcoming Text and Framed Portrait -->
     <div class="hero-container">
+        <div class="welcome-header">
+            <h1 class="welcome-title">Candy Heals</h1>
+            <p class="welcome-subtitle">Official Website</p>
+        </div>
         <div class="portrait-wrapper">
             <img src="portrait.jpg" alt="Candy Heals Portrait" class="portrait-image">
             <img src="frame.png" alt="Ornate Gothic Frame" class="portrait-frame">
