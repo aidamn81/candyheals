@@ -143,6 +143,24 @@
             font-size: 1rem;
             line-height: 1.6;
             color: #f0e6f6;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .section-content p {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .section-content img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
         }
 
         /* Responsive design */
@@ -167,12 +185,18 @@
                 font-size: 0.7rem;
                 padding: 5px 8px;
             }
+            .section-content {
+                flex-direction: column;
+            }
+            .section-content img {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar (Imported buttons from index.html + Home button) -->
+    <!-- Top Navigation Bar -->
     <nav class="nav-bar">
         <a href="index.html">Home</a>
         <a href="index.html#showreel">Showreel</a>
@@ -200,7 +224,8 @@
         <section id="wedding" class="ceremony-section">
             <h2 class="section-title">Wedding Ceremony</h2>
             <div class="section-content">
-                <p>Tailored, unique, and deeply personal wedding ceremonies crafted to celebrate your love story. Whether you envision something alternative, gothic, traditional, or completely bespoke, your ceremony will reflect your true personalities.</p>
+                <p>Tailored, unique, and personalised wedding ceremonies crafted to celebrate your love story. Whether you envision something alternative, traditional, or completely bespoke, your ceremony will reflect your true personalities.<br><br>You also have the option to add a drag show to your event after the ceremony.</p>
+                <img src="wedding.jpg" alt="Wedding Ceremony">
             </div>
         </section>
 
@@ -208,7 +233,7 @@
         <section id="naming" class="ceremony-section">
             <h2 class="section-title">Naming Ceremony</h2>
             <div class="section-content">
-                <p>Welcome your new addition into the family and the wider community with a meaningful and magical naming ceremony. Complete with customized promises, symbolic rituals, and surrounded by loved ones.</p>
+                <p>Welcome your new name into the family and the wider community with a meaningful and magical naming ceremony surrounded by loved ones.<br><br>As changing your name can be a milestone in your life and/or your transition journey why not make it more memorable by celebrating it.</p>
             </div>
         </section>
 
@@ -222,9 +247,9 @@
 
         <!-- Funeral & Memorial Section -->
         <section id="funeral" class="ceremony-section">
-            <h2 class="section-title">Funeral & Memorial</h2>
+            <h2 class="section-title">Funerals & Memorials</h2>
             <div class="section-content">
-                <p>Honor the lives of your loved ones with compassionate, personal, and respectful celebrations of life. Every tribute is written with care to capture their distinct essence, personality, and legacy.</p>
+                <p>Honor the lives of your loved ones with personal, and respectful celebrations of life. Every tribute is written with care to capture their distinct essence, personality, and legacy.</p>
             </div>
         </section>
 
