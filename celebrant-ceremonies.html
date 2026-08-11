@@ -21,9 +21,204 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 20px;
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.95), rgba(11, 2, 20, 0.8));
+            z-index: 100;
+        }
+
+        .nav-bar a {
+            color: #d8b4fe;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            background: rgba(46, 16, 101, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            color: #ffffff;
+            background: rgba(76, 29, 149, 0.6);
+            border-color: rgba(236, 72, 153, 0.6);
+            text-shadow: 0 0 10px #ec4899, 0 0 20px #8b5cf6;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Ceremonies Navigation Buttons Bar */
+        .ceremonies-nav {
+            position: fixed;
+            top: 75px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(11, 2, 20, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 90;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .ceremonies-nav a {
+            color: #f472b6;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            background: rgba(76, 29, 149, 0.3);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .ceremonies-nav a:hover {
+            color: #ffffff;
+            background: rgba(236, 72, 153, 0.4);
+            border-color: rgba(244, 114, 182, 0.8);
+            box-shadow: 0 0 10px rgba(244, 114, 182, 0.4);
+        }
+
+        /* Page Layout & Sections */
+        .page-container {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 160px;
+            padding-bottom: 80px;
+            background-color: #0b0214;
+            gap: 60px;
+        }
+
+        .ceremony-section {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            background: rgba(18, 3, 32, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(5px);
+            scroll-margin-top: 150px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #f472b6;
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #f0e6f6;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .page-container {
+                padding-top: 180px;
+            }
+            .ceremonies-nav {
+                top: 65px;
+                padding: 8px 10px;
+                gap: 6px;
+            }
+            .ceremonies-nav a {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Top Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="index.html#showreel">Showreel</a>
+        <a href="events.html">Events</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#performance-types">Performance Types</a>
+        <a href="celebrant-ceremonies.html">Celebrant Ceremonies</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="index.html#about">About Me</a>
+        <a href="merchandise.html">Merchandise</a>
+    </nav>
+
+    <!-- Ceremonies Jump Buttons Bar -->
+    <div class="ceremonies-nav">
+        <a href="#wedding">Wedding Ceremony</a>
+        <a href="#naming">Naming Ceremony</a>
+        <a href="#anniversaries">Anniversaries</a>
+        <a href="#funeral">Funeral & Memorial</a>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="page-container">
+        
+        <!-- Wedding Ceremony Section -->
+        <section id="wedding" class="ceremony-section">
+            <h2 class="section-title">Wedding Ceremony</h2>
+            <div class="section-content">
+                <p>Tailored, unique, and deeply personal wedding ceremonies crafted to celebrate your love story. Whether you envision something alternative, gothic, traditional, or completely bespoke, your ceremony will reflect your true personalities.</p>
+            </div>
+        </section>
+
+        <!-- Naming Ceremony Section -->
+        <section id="naming" class="ceremony-section">
+            <h2 class="section-title">Naming Ceremony</h2>
+            <div class="section-content">
+                <p>Welcome your new addition into the family and the wider community with a meaningful and magical naming ceremony. Complete with customized promises, symbolic rituals, and surrounded by loved ones.</p>
+            </div>
+        </section>
+
+        <!-- Anniversaries Section -->
+        <section id="anniversaries" class="ceremony-section">
+            <h2 class="section-title">Anniversaries</h2>
+            <div class="section-content">
+                <p>Renew your vows and celebrate milestones of enduring love. Create new memories, reaffirm your lifelong commitments, and celebrate your journey together with a bespoke vow renewal ceremony.</p>
+            </div>
+        </section>
+
+        <!-- Funeral & Memorial Section -->
+        <section id="funeral" class="ceremony-section">
+            <h2 class="section-title">Funeral & Memorial</h2>
+            <div class="section-content">
+                <p>Honor the lives of your loved ones with compassionate, personal, and respectful celebrations of life. Every tribute is written with care to capture their distinct essence, personality, and legacy.</p>
+            </div>
+        </section>
+
+    </div>
+
 </body>
 </html>
- 
