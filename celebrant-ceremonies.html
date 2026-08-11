@@ -31,9 +31,9 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
-            padding: 15px 20px;
-            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.95), rgba(11, 2, 20, 0.8));
+            gap: 10px;
+            padding: 12px 15px;
+            background: linear-gradient(to bottom, rgba(11, 2, 20, 0.98), rgba(11, 2, 20, 0.9));
             z-index: 100;
         }
 
@@ -41,16 +41,17 @@
             color: #d8b4fe;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
-            padding: 8px 14px;
+            padding: 6px 10px;
             background: rgba(46, 16, 101, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(168, 85, 247, 0.3);
             border-radius: 6px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .nav-bar a:hover {
@@ -64,7 +65,7 @@
         /* Ceremonies Navigation Buttons Bar */
         .ceremonies-nav {
             position: fixed;
-            top: 75px;
+            top: 105px;
             left: 0;
             width: 100%;
             display: flex;
@@ -107,7 +108,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 160px;
+            padding-top: 190px;
             padding-bottom: 80px;
             background-color: #0b0214;
             gap: 60px;
@@ -122,7 +123,7 @@
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(5px);
-            scroll-margin-top: 150px;
+            scroll-margin-top: 180px;
         }
 
         .section-title {
@@ -147,10 +148,10 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .page-container {
-                padding-top: 180px;
+                padding-top: 210px;
             }
             .ceremonies-nav {
-                top: 65px;
+                top: 95px;
                 padding: 8px 10px;
                 gap: 6px;
             }
@@ -158,13 +159,22 @@
                 font-size: 0.7rem;
                 padding: 4px 8px;
             }
+            .nav-bar {
+                gap: 6px;
+                padding: 8px 10px;
+            }
+            .nav-bar a {
+                font-size: 0.7rem;
+                padding: 5px 8px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
+    <!-- Top Navigation Bar (Imported buttons from index.html + Home button) -->
     <nav class="nav-bar">
+        <a href="index.html">Home</a>
         <a href="index.html#showreel">Showreel</a>
         <a href="events.html">Events</a>
         <a href="index.html#contact">Contact</a>
