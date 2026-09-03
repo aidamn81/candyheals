@@ -171,25 +171,24 @@
 
         #tickets {
             background-color: #120320;
+            max-width: 100%;
         }
 
         #contact {
             background-color: #0b0214;
         }
 
-        /* Tickets Layout Container - Forced Side by Side Layout */
+        /* Tickets Layout Container - Grid Forced Side-by-Side */
         .tickets-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: stretch;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            gap: 30px;
             width: 100%;
-            max-width: 1100px;
-            margin-top: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            justify-content: center;
+            align-items: start;
         }
 
         .ticket-box {
@@ -199,8 +198,7 @@
             padding: 20px;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(5px);
-            flex: 0 0 48%;
-            min-width: 320px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -329,6 +327,13 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .tickets-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-bar {
                 gap: 8px;
