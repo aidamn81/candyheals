@@ -177,38 +177,27 @@
             background-color: #0b0214;
         }
 
-        /* Tickets Layout Container - Side-by-Side Flex */
+        /* Tickets Layout Container - Forced Side-by-Side Table Layout override */
         .tickets-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: stretch;
-            gap: 30px;
+            display: table;
+            table-layout: fixed;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+            border-spacing: 30px 0;
         }
 
         .ticket-box {
+            display: table-cell;
+            vertical-align: top;
+            width: 50%;
             background: rgba(18, 3, 32, 0.7);
             border: 1px solid rgba(168, 85, 247, 0.3);
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(5px);
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Force DesignMyNight widget components to display side-by-side cleanly */
-        .ticket-box iframe, 
-        .ticket-box > div {
-            width: 100% !important;
-            max-width: 100% !important;
         }
 
         /* Back to Top Button Styling */
@@ -336,12 +325,12 @@
         /* Responsive Design */
         @media (max-width: 900px) {
             .tickets-container {
-                flex-direction: column;
-                align-items: center;
+                display: block;
             }
             .ticket-box {
+                display: block;
                 width: 100%;
-                max-width: 500px;
+                margin-bottom: 20px;
             }
         }
 
@@ -399,7 +388,7 @@
         </div>
     </div>
 
-    <!-- Tickets Section (Moved to be the very first section under the hero image) -->
+    <!-- Tickets Section (First section under the hero image, with forced side-by-side table layout) -->
     <section id="tickets">
         <h2>Tickets</h2>
         <p>Secure your spots for upcoming shows and live performances below.</p>
