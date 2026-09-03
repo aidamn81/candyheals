@@ -177,15 +177,19 @@
             background-color: #0b0214;
         }
 
-        /* Tickets Layout Container */
+        /* Tickets Layout Container - Forced Side by Side Layout */
         .tickets-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: row;
+            flex-wrap: nowrap;
             justify-content: center;
-            gap: 30px;
+            align-items: stretch;
+            gap: 20px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
 
         .ticket-box {
@@ -195,9 +199,8 @@
             padding: 20px;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(5px);
-            flex: 1;
-            min-width: 280px;
-            max-width: 450px;
+            flex: 0 0 48%;
+            min-width: 320px;
             display: flex;
             flex-direction: column;
             align-items: center;
