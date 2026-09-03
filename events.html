@@ -76,7 +76,7 @@
 
         .events-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding: 0 20px;
         }
 
@@ -97,6 +97,55 @@
             font-weight: 600;
             color: #c084fc;
             letter-spacing: 2px;
+        }
+
+        /* Event Links Section Styles */
+        .event-links-section {
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .event-link-card {
+            background: rgba(18, 3, 32, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 20px 25px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .event-link-card:hover {
+            border-color: rgba(236, 72, 153, 0.6);
+            background: rgba(46, 16, 101, 0.5);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .event-link-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #f3e8ff;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .event-link-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #f472b6;
+            letter-spacing: 1px;
         }
 
         /* Content Layout Sections */
@@ -210,6 +259,18 @@
         <div class="events-header">
             <h1 class="events-title">Updates & Feed</h1>
             <p class="events-subtitle">News and events from Candy Heals!</p>
+        </div>
+
+        <!-- Ticket Links Section -->
+        <div class="event-links-section">
+            <a href="https://www.designmynight.com/london/whats-on/burlesque-cabaret/queerbat-an-alternative-lgbtq-evening-with-drag-show-and-karaoke?t=tickets" target="_blank" class="event-link-card">
+                <span class="event-link-title">QUEERBAT - AN LGBTQ+ EVENING WITH ALTERNATIVE MUSIC, DRAG SHOW AND KARAOKE</span>
+                <span class="event-link-date">16/10/2026 — TICKETS</span>
+            </a>
+            <a href="https://www.designmynight.com/london/whats-on/burlesque-cabaret/munster-halloween-drag-cabaret?t=tickets" target="_blank" class="event-link-card">
+                <span class="event-link-title">MUNSTER HALLOWEEN DRAG CABARET</span>
+                <span class="event-link-date">23/10/2026 — TICKETS</span>
+            </a>
         </div>
 
         <!-- Live Instagram / Social Feed Section -->
